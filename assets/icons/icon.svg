@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="112" fill="#0f0f0f"/>
+  <!-- calendar body -->
+  <rect x="96" y="128" width="320" height="288" rx="32" fill="#f7f7f5"/>
+  <!-- header bar -->
+  <rect x="96" y="128" width="320" height="96" rx="32" fill="#f7f7f5"/>
+  <rect x="96" y="176" width="320" height="48" fill="#f7f7f5"/>
+  <!-- header dark band -->
+  <rect x="96" y="128" width="320" height="80" rx="0" fill="#1a1a1a"/>
+  <rect x="96" y="128" width="320" height="80" rx="32" fill="#1a1a1a"/>
+  <rect x="96" y="168" width="320" height="40" fill="#1a1a1a"/>
+  <!-- ring left -->
+  <rect x="168" y="96" width="32" height="80" rx="16" fill="#f7f7f5"/>
+  <!-- ring right -->
+  <rect x="312" y="96" width="32" height="80" rx="16" fill="#f7f7f5"/>
+  <!-- dots grid -->
+  <circle cx="176" cy="296" r="20" fill="#0f0f0f"/>
+  <circle cx="256" cy="296" r="20" fill="#0f0f0f"/>
+  <circle cx="336" cy="296" r="20" fill="#0f0f0f"/>
+  <circle cx="176" cy="368" r="20" fill="#0f0f0f"/>
+  <circle cx="256" cy="368" r="20" fill="#0f0f0f"/>
+</svg>
