@@ -1,0 +1,12 @@
+{
+  "name": "date-utils",
+  "version": "1.0.0",
+  "description": "Date calculator - add/subtract days, count days between dates",
+  "scripts": {
+    "build": "tailwindcss -i ./assets/css/tailwind.src.css -o ./assets/css/tailwind.min.css --minify",
+    "watch": "tailwindcss -i ./assets/css/tailwind.src.css -o ./assets/css/tailwind.min.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  }
+}
