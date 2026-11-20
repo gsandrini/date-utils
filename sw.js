@@ -5,7 +5,7 @@
  * Caches all static assets on install so the app works offline.
  * Update CACHE_VERSION when deploying new files.
  */
-const CACHE_VERSION = 'v7';
+const CACHE_VERSION = 'v8';
 const CACHE_NAME = `date-utils-${CACHE_VERSION}`;
 
 /**

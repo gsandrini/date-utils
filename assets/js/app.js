@@ -23,7 +23,11 @@ const TRANSLATIONS = {
     errEnterDays: 'Inserisci il numero di giorni',
     errEnterStartDate: 'Inserisci la data di inizio',
     errEnterEndDate: 'Inserisci la data di fine',
-    madeWith: 'Sviluppata con il supporto di',
+    madeWith: 'Developed with AI assistance',
+    switchToItalian: 'Passa a italiano',
+    switchToEnglish: 'Passa a inglese',
+    activateLightTheme: 'Attiva tema chiaro',
+    activateDarkTheme: 'Attiva tema scuro',
   },
   en: {
     appName: 'Date Utils',
@@ -47,7 +51,11 @@ const TRANSLATIONS = {
     errEnterDays: 'Please enter the number of days',
     errEnterStartDate: 'Please enter the start date',
     errEnterEndDate: 'Please enter the end date',
-    madeWith: 'Developed with the support of',
+    madeWith: 'Developed with AI assistance',
+    switchToItalian: 'Switch to Italian',
+    switchToEnglish: 'Switch to English',
+    activateLightTheme: 'Activate light theme',
+    activateDarkTheme: 'Activate dark theme',
   },
 };
 
@@ -143,14 +151,40 @@ const DateService = {
   },
 };
 
+const PREF_KEYS = { language: 'date-utils-language', theme: 'date-utils-theme' };
+const THEME_COLORS = { light: '#f7f7f4', dark: '#181a1f' };
+
 function dateApp() {
   return {
-    lang: navigator.language.startsWith('it') ? 'it' : 'en',
+    // Initial values are resolved once by the inline script in index.html
+    // (before first paint) and read back here.
+    lang: document.documentElement.lang === 'it' ? 'it' : 'en',
+    theme: document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light',
     get t() {
       return TRANSLATIONS[this.lang];
     },
+
+    setLanguage(nextLanguage) {
+      if (!Object.prototype.hasOwnProperty.call(TRANSLATIONS, nextLanguage)) return;
+      this.lang = nextLanguage;
+      document.documentElement.lang = nextLanguage;
+      try { localStorage.setItem(PREF_KEYS.language, nextLanguage); } catch (_) {}
+    },
+
     toggleLang() {
-      this.lang = this.lang === 'it' ? 'en' : 'it';
+      this.setLanguage(this.lang === 'it' ? 'en' : 'it');
+    },
+
+    setTheme(nextTheme) {
+      if (nextTheme !== 'light' && nextTheme !== 'dark') return;
+      this.theme = nextTheme;
+      document.documentElement.dataset.theme = nextTheme;
+      document.querySelector('meta[name="theme-color"]').content = THEME_COLORS[nextTheme];
+      try { localStorage.setItem(PREF_KEYS.theme, nextTheme); } catch (_) {}
+    },
+
+    toggleTheme() {
+      this.setTheme(this.theme === 'dark' ? 'light' : 'dark');
     },
 
     /**
